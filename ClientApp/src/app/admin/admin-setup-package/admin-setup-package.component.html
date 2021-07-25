@@ -1,0 +1,88 @@
+<div class="main-div">
+  <span class="page-title">Setup&#160;Package</span>
+  <mat-card class="package-options-card">
+    <mat-card-header>
+      <mat-card-title>Package Options</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Title</mat-label>
+          <input matInput type="text" autocomplete="off" (input)="titleChanged($event)">
+          <mat-placeholder class="placeholder"></mat-placeholder>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-slide-toggle (change)="colorChanged($event)">Color</mat-slide-toggle>
+      </p>
+      <p>
+        <label>Sizes and Amount</label>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Full Pages</mat-label>
+          <input matInput (input)="fullSizeChanged($event)" [(ngModel)]=fullInsertsAmount>
+          <mat-placeholder class="placeholder"></mat-placeholder>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="right-form-field">
+          <mat-label>Quarter Pages</mat-label>
+          <input matInput (input)="quarterSizeChanged($event)" [(ngModel)]=quarterInsertsAmount>
+          <mat-placeholder class="placeholder"></mat-placeholder>
+        </mat-form-field>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Half Pages</mat-label>
+          <input matInput (input)="halfSizeChanged($event)" [(ngModel)]=halfInsertsAmount>
+          <mat-placeholder class="placeholder"></mat-placeholder>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="right-form-field">
+          <mat-label>Eight Pages</mat-label>
+          <input matInput (input)="eigthSizeChanged($event)" [(ngModel)]=eigthInsertsAmount>
+          <mat-placeholder class="placeholder"></mat-placeholder>
+        </mat-form-field>
+      </p>
+      <p>
+        <label>Time Length</label>
+      <p>
+        <mat-radio-group (change)="radioChange($event)">
+          <mat-radio-button value="1">
+            Days
+          </mat-radio-button>
+          <mat-radio-button [value]="2" class="right-form-field">
+            Weeks
+          </mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field appearance="fill" class="right-form-field">
+          <mat-label>Length of time</mat-label>
+          <input matInput (input)="lengthOfTimeChange($event)">
+          <mat-placeholder class="placeholder"></mat-placeholder>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <mat-label>Price</mat-label>
+          <input matInput (input)="priceChanged($event)">
+          <span matPrefix>$</span>
+        </mat-form-field>
+      </p>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="package-card">
+    <mat-card-header>
+      <mat-card-title>{{package.title}}</mat-card-title>
+      <mat-card-subtitle>{{package.description}}</mat-card-subtitle>
+    </mat-card-header>
+    <p class="mat-card-price-container">${{package.price}}</p>
+    <mat-card-content class="package-content">
+      <p>Sizes and amount:</p>
+      <p class="margin-left">Full: <span>{{fullInsertsAmount}}</span></p>
+      <p class="margin-left">Half: <span>{{halfInsertsAmount}}</span></p>
+      <p class="margin-left">Quarter: <span>{{quarterInsertsAmount}}</span></p>
+      <p class="margin-left">Eighth: <span>{{eigthInsertsAmount}}</span></p>
+      <p>Color: <span>{{package.isColor}}</span></p>
+      <p>Time Length: <span>{{timeLength}} {{unitOfTime}}</span></p>
+    </mat-card-content>
+    <div class="mat-card-button-container">
+      <button mat-raised-button color="primary" (click)='submitPackage()'>Submit Package</button>
+    </div>
+  </mat-card>
+</div>

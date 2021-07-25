@@ -1,0 +1,38 @@
+<div class="main-div">
+  <div class="inner-div">
+    <h2 class="header-title">Package Maintenace</h2>
+    <div class="package-selection">
+      <div *ngFor="let package of viewModel.packages">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{package.title}}</mat-card-title>
+            <mat-card-subtitle>{{package.description}}</mat-card-subtitle>
+          </mat-card-header>
+          <p class="mat-card-price-container">${{package.price}}</p>
+          <mat-card-content>
+            <p>Inserts:</p>
+            <p class="margin-left">Full: <span>{{package.fullInsertsAmount}}</span></p>
+            <p class="margin-left">Half: <span>{{package.halfInsertsAmount}}</span></p>
+            <p class="margin-left">Quarter: <span>{{package.quarterInsertsAmount}}</span></p>
+            <p class="margin-left">Eighth: <span>{{package.eighthInsertsAmount}}</span></p>
+            <p>Color: <span>{{package.isColor}}</span></p>
+            <p>Time Length: <span>{{package.timeLength}}</span><span> {{package.unitOfTime}}</span></p>
+          </mat-card-content>
+          <mat-card-footer class="mat-card-button-container">
+            <button mat-raised-button class="invalidate-button" (click)="invalidatePackage(package.id)">Invalidate This
+              Package</button>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+      <mat-card *ngIf="!packageListCutoffSize" class="addPackage" (click)="addAPackage()">
+        <mat-card-content>
+          <p class="addPackageText">Add A</p>
+          <p class="addPackageText">Package!</p>
+          <button class="add-package-button" mat-fab color="primary">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

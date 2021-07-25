@@ -1,0 +1,31 @@
+<div class=main-div>
+  <mat-card>
+    <mat-card-title>Welcome Back</mat-card-title>
+    <mat-card-subtitle>please sign in</mat-card-subtitle>
+    <mat-card-content>
+      <div class="login-header">
+        <mat-icon class="account-icon">account_circle</mat-icon>
+      </div>
+
+      <mat-form-field class=email>
+        <mat-label>Enter your email</mat-label>
+        <input matInput [(ngModel)]="email">
+      </mat-form-field>
+      <div>
+        <mat-form-field class=email>
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" class="email" [(ngModel)]="password">
+          <button mat-icon-button matSuffix (click)="hide=!hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <button mat-raised-button color=primary (click)=checkCredentialsAndProceed()>Sign In</button>
+    <div class="account-setup">
+      <span>Don't have an account? </span>
+      <a [routerLink]="'/sign-up'">Sign Up</a>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,89 @@
+<div class="jumbotron">
+  <section class="title-section">
+    <div class="newspaper-image">
+      <img src="/assets/newspaper-image.png" />
+    </div>
+    <div class="title">
+      <h1>Oakland Post <br /> Ad Portal</h1>
+      <h3>Create and manage ads for your business</h3>
+      <button mat-raised-button class="get-started-button" (click)="scroll('Packages')">Get Started</button>
+    </div>
+  </section>
+</div>
+
+<section class="main-content">
+  <!-- Overview -->
+  <div class="overview">
+    <div class="feature-header">
+      <div class="banner">
+        <div class="banner-title">It's easy and quick to get your advertisements scheduled!</div>
+      </div>
+    </div>
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="feature-content">
+          <span>Select a package</span>
+        </div>
+        <div class="feature-avatar">
+          <mat-icon class="feature-icon">app_registration</mat-icon>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-content">
+          <span>Setup your ads</span>
+        </div>
+        <div class="feature-avatar">
+          <mat-icon class="feature-icon">tune</mat-icon>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-content">
+          <span>Schedule dates</span>
+        </div>
+        <div class="feature-avatar">
+          <mat-icon class="feature-icon">event</mat-icon>
+        </div>
+
+      </div>
+      <div class="feature-item">
+        <div class="feature-content">
+          <span>Get discovered!</span>
+        </div>
+        <div class="feature-avatar">
+          <mat-icon class="feature-icon">thumb_up</mat-icon>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Package Selection -->
+  <div class="package-selection-div" id="Packages">
+    <div class="package-selection-title-hr"></div>
+    <h1 class="package-selection-title">Let's Get Started!</h1>
+    <div class="package-selection-div-content">
+      <div *ngFor="let package of this.viewModel.packages">
+        <mat-card class="package-card">
+          <mat-card-header>
+            <mat-card-title>{{package.title}}</mat-card-title>
+            <mat-card-subtitle>{{package.description}}</mat-card-subtitle>
+          </mat-card-header>
+          <p class="mat-card-price-container">${{package.price}}</p>
+          <mat-card-content class="package-card-content">
+            <p>Inserts:</p>
+            <p class="margin-left">Full: <span>{{package.fullInsertsAmount}}</span></p>
+            <p class="margin-left">Half: <span>{{package.halfInsertsAmount}}</span></p>
+            <p class="margin-left">Quarter: <span>{{package.quarterInsertsAmount}}</span></p>
+            <p class="margin-left">Eighth: <span>{{package.eighthInsertsAmount}}</span></p>
+            <p>Color: <span>{{package.isColor}}</span></p>
+            <p>Time Length: <span>{{package.timeLength}}</span><span> {{package.unitOfTime}}</span></p>
+          </mat-card-content>
+          <mat-card-footer class="mat-card-button-container">
+            <button mat-raised-button color="primary" (click)="openWarningDialog(package)">Choose this
+              package</button>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</section>

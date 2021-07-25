@@ -1,0 +1,59 @@
+.main-div {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.page-title {
+  font-size: 2em;
+  width: 0.01em;
+  margin-top: 1em;
+}
+
+.page-title2 {
+  font-size: 2em;
+  width: 0.01em;
+  margin-top: 1em;
+}
+
+.right-form-field {
+  margin-left: 1em;
+}
+
+.package-options-card {
+  height: 40em;
+  margin-top: 6em;
+}
+
+.package-card {
+  height: 30em;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 6em;
+  margin-left: 3em;
+}
+
+.package-content {
+  flex-grow: 1;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+}
+
+.mat-card-price-container {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  margin-top: 10%;
+}
+
+.mat-card-button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+.margin-left {
+  margin-left: 2em;
+}

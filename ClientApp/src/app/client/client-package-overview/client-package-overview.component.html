@@ -1,0 +1,123 @@
+<div class="main">
+  <div>
+    <h1 class="page-title">Available Inserts</h1>
+  </div>
+  <div class="wizard-container">
+    <div class="wizard-list">
+      <div class="wizard-item">
+        <div class="wizard-content">
+          <span>Select a package</span>
+        </div>
+        <div class="wizard-avatar active">
+          <mat-icon class="wizard-icon">app_registration</mat-icon>
+        </div>
+      </div>
+      <div class="wizard-item">
+        <div class="wizard-content">
+          <span>Setup your ads</span>
+        </div>
+        <div class="wizard-avatar active">
+          <mat-icon class="wizard-icon">tune</mat-icon>
+        </div>
+      </div>
+      <div class="wizard-item">
+        <div class="wizard-content">
+          <span>Checkout</span>
+        </div>
+        <div class="wizard-avatar">
+          <mat-icon class="wizard-icon">shopping_cart</mat-icon>
+        </div>
+      </div>
+      <div class="wizard-item">
+        <div class="wizard-content">
+          <span>Finish!</span>
+        </div>
+        <div class="wizard-avatar">
+          <mat-icon class="wizard-icon">thumb_up</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="main-content">
+      <div class="available-ad-container">
+        <mat-card class="info-card .mat-card-no-padding">
+          <span class="info-card-avatar">
+            <mat-icon class="info-card-icon">tune</mat-icon>
+          </span>
+          <div class="info-card-content">
+            <div>
+              <h2>Setup ads now or Later?</h2>
+            </div>
+            <p>The inserts below are included in the package you selected. You can start setting up your ads
+              now or continue to checkout and we will save the unused inserts to your account to be used
+              later!</p>
+          </div>
+        </mat-card>
+        <div class="ad-list">
+          <div class="insert-card-container" *ngFor="let pendingAd of this.viewModel?.pendingAds">
+            <mat-card class="insert-card" [ngClass]="{'disabled-insert': !pendingAd.configured}">
+              <mat-card-header>
+                <mat-card-title>{{pendingAd.size}}</mat-card-title>
+              </mat-card-header>
+              <mat-divider></mat-divider>
+              <mat-card-content>
+                <mat-list>
+                  <mat-list-item class="list-item-remove-padding">
+                    <span>Date</span>
+                    <span class="spacer"></span>
+                    <span *ngIf="!(pendingAd.ad?.startDate && pendingAd.ad?.endDate)">----</span>
+                    <span *ngIf="pendingAd.ad?.startDate && pendingAd.ad?.endDate" class="dates">
+                      {{pendingAd?.ad?.startDate | date:"M/d/yyyy" }} - {{pendingAd?.ad?.endDate | date:"M/d/yyyy"
+                      }}
+                    </span>
+                  </mat-list-item>
+                  <mat-list-item class="list-item-remove-padding">
+                    <span>Location</span>
+                    <span class="spacer"></span>
+                    <span>{{pendingAd.ad?.location || "----"}}</span>
+                  </mat-list-item>
+                  <mat-list-item class="list-item-remove-padding">
+                    <span>Ad Files Uploaded</span>
+                    <span class="spacer"></span>
+                    <span>{{pendingAd.ad?.files?.length || "----"}}</span>
+                  </mat-list-item>
+                </mat-list>
+              </mat-card-content>
+            </mat-card>
+            <div class="insert-card-actions">
+              <mat-icon class="aligned-checkmark" *ngIf="!pendingAd.configured">done</mat-icon>
+              <span *ngIf="!pendingAd.configured">Setup Later or&nbsp;&nbsp;</span>
+              <button mat-raised-button (click)="setupAd(pendingAd)">
+                {{!pendingAd.configured ? "Setup Now" : "Edit" }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="package-container">
+        <mat-card class="package-card">
+          <mat-card-header>
+            <mat-card-title>{{viewModel?.adPackage?.title || "Package Title"}}</mat-card-title>
+            <mat-card-subtitle>{{viewModel?.adPackage?.description || "Description"}}</mat-card-subtitle>
+          </mat-card-header>
+          <p class="mat-card-price-container">${{viewModel?.adPackage?.price || "--"}}</p>
+          <mat-card-content class="package-card-content">
+            <span>Ad Sizes</span>
+            <div class="ad-sizes-list">
+              <span *ngFor="let size of this.viewModel?.adPackageSizes| keyvalue">
+                {{size.key}}: {{size.value}}
+              </span>
+            </div>
+            <p>Color: <span>{{viewModel?.adPackage?.color || "?"}}</span></p>
+            <p>Time Length: <span>{{viewModel?.adPackage?.time?.length}}
+                {{viewModel?.adPackage?.time?.unitOfTime}}</span></p>
+          </mat-card-content>
+        </mat-card>
+        <button mat-raised-button color="primary" class="checkout-button" (click)="checkout()">Continue to
+          Checkout</button>
+      </div>
+    </div>
+  </div>
+</div>

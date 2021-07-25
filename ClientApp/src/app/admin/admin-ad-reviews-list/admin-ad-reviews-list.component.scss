@@ -1,0 +1,48 @@
+.main_div {
+  display: flex;
+  height: 100%;
+  justify-content: center; 
+}
+
+.innerdiv {
+  width: 85em;
+  justify-content: center;
+  margin-top: 2%;
+}
+
+.innerdiv_matcard {
+  display: flex;
+  justify-content: space-between;
+}
+
+div_button {
+  justify-content: flex-end;
+}
+
+.matcard_title_style {
+  font-size: 20px;
+}
+
+.table {
+  margin-right: 3em;
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+  color: White;
+  background-color: #3f51b5;
+  font-weight: bold;
+  border-bottom-color: white;
+  border-bottom-style: solid;
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+  background-color: white !important;
+}
+
+::ng-deep .mat-tab-group {
+  background-color: #3f51b5;
+}
+
+::ng-deep .mat-tab-list .mat-tab-label {
+  color: white;
+}

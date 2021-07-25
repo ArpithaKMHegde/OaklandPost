@@ -1,0 +1,92 @@
+<div class="main-div">
+  <div class="main-div-container">
+    <span class="page-title">Ad&#160;Review for {{_userEmail}}</span>
+    <div class="main-div-content">
+      <mat-card class="calendar-review">
+        <mat-card-content>
+          <div class="mat-title">Calendar Review</div>
+          <mat-calendar class="ad-calendar" *ngIf="this.viewModel.calendarRange"
+            [selected]="this.viewModel.calendarRange">
+          </mat-calendar>
+          <div class="mat-title ad-title-margin-2">Ad Files</div>
+          <div class="file-upload-container">
+            <ng-container *ngIf="!this.viewModel.ad?.files">
+              <div class="container-empty-state">
+                <span>Unable to load ad file(s)</span>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="this.viewModel.files">
+              <div class="container-filled">
+                <div class="file-item" *ngFor="let file of this.viewModel.ad?.files"
+                  (click)="this.downloadFile(file.id)">
+                  <mat-icon class="file-item-icon">attach_file</mat-icon>
+                  <span>{{file.userFileUpload.originalFileName}}</span>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <div class="ad-summary">
+        <mat-card class="summary-card">
+          <mat-card-title class="title-insert">{{_adInfo.pageType}}</mat-card-title>
+          <mat-card-subtitle>{{_adInfo.package.title}}</mat-card-subtitle>
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            <mat-list>
+              <mat-list-item class="list-item-remove-padding">
+                <span>Date</span>
+                <span class="spacer"></span>
+                <span *ngIf="!viewModel.startDateString || !viewModel.endDateString">Select a date</span>
+                <span *ngIf="viewModel.startDateString && viewModel.endDateString">{{viewModel.startDateString
+                  || "N/A"}} - {{viewModel.endDateString || "N/A"}}</span>
+              </mat-list-item>
+              <mat-list-item class="list-item-remove-padding">
+                <span>Location</span>
+                <span class="spacer"></span>
+                <span>{{viewModel.selectedAdLocation}}</span>
+              </mat-list-item>
+              <mat-list-item class="list-item-remove-padding">
+                <span>Color</span>
+                <span class="spacer"></span>
+                <mat-icon *ngIf="viewModel.isColor" class="green-icon">check</mat-icon>
+                <mat-icon *ngIf="!viewModel.isColor">remove</mat-icon>
+              </mat-list-item>
+              <mat-list-item class="list-item-remove-padding">
+                <span>Time Length</span>
+                <span class="spacer"></span>
+                <span>{{_adInfo.package.timeLength}} {{_adInfo.package.unitOfTime}}</span>
+              </mat-list-item>
+              <mat-list-item class="list-item-remove-padding">
+                <span>Ad Files Uploaded</span>
+                <span class="spacer"></span>
+                <span>{{viewModel.files.length}}</span>
+              </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+        </mat-card>
+        <div class="margin-top">
+          <mat-card>
+            <mat-card-title>Comments</mat-card-title>
+            <mat-card-content>
+              <mat-form-field class="full-width">
+                <textarea matInput [(ngModel)]="_adComments"></textarea>
+              </mat-form-field>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="review-actions">
+          <button mat-raised-button color="primary" class="submit-ad-button" (click)="submitAd(true)"
+            [disabled]="this.viewModel.adSubmitting">Approve
+            <mat-spinner *ngIf="this.viewModel.adSubmitting" style="display: inline-block;" [diameter]="20">
+            </mat-spinner>
+          </button>
+          <button mat-raised-button class="submit-ad-button" (click)="submitAd(false)">Deny
+            <mat-spinner *ngIf="this.viewModel.adSubmitting" style="display: inline-block;" [diameter]="20">
+            </mat-spinner>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

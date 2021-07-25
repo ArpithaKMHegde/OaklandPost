@@ -1,0 +1,35 @@
+<div class="file-upload-container no-select" (drag)="onDrag($event)" (dragend)="onDragEnd($event)" (dragover)="onDragOver($event)" (drop)="onDrop($event)" >
+    <ng-container>
+        <div class="container-empty-state">
+            <mat-icon class="file-upload-icon">file_upload</mat-icon>
+            <ng-content></ng-content>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="files?.length">
+        <mat-divider [vertical]="true"></mat-divider>
+        <div class="container-file-state">
+            <h3>Current Files</h3>
+            <div class="file-upload-list-scroll-container">
+                <div class="file-upload-list-container">
+                <mat-list class="file-upload-list">
+                    <mat-list-item *ngFor="let file of files" class="list-item-remove-padding list-item-border">
+                        <mat-icon mat-list-icon>file_present</mat-icon>
+                        <span>{{file.name}}</span>
+                        <span class="spacer"></span>
+                        <button mat-icon-button (click)="removeFile($event, file)"><mat-icon class="red-icon">remove</mat-icon></button>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+        </div>
+
+        </div>
+    </ng-container>
+    <ng-container *ngIf="false">
+        <div class="container-file-state">
+            <div *ngFor="let file of files" class="file-item">
+                    <mat-icon>file_present</mat-icon>
+                    {{file.name}}
+            </div>
+        </div>
+    </ng-container>
+</div>

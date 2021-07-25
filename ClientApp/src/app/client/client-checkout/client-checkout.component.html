@@ -1,0 +1,161 @@
+<div class="main">
+  <div class="section">
+    <div class="main-content">
+      <h3 class="list-title">Checkout</h3>
+      <div class="wizard-container">
+        <div class="wizard-list">
+          <div class="wizard-item">
+            <div class="wizard-content">
+              <span>Select a package</span>
+            </div>
+            <div class="wizard-avatar active">
+              <mat-icon class="wizard-icon">app_registration</mat-icon>
+            </div>
+          </div>
+          <div class="wizard-item">
+            <div class="wizard-content">
+              <span>Setup your ads</span>
+            </div>
+            <div class="wizard-avatar active">
+              <mat-icon class="wizard-icon">tune</mat-icon>
+            </div>
+          </div>
+          <div class="wizard-item">
+            <div class="wizard-content">
+              <span>Checkout</span>
+            </div>
+            <div class="wizard-avatar active">
+              <mat-icon class="wizard-icon">shopping_cart</mat-icon>
+            </div>
+          </div>
+          <div class="wizard-item">
+            <div class="wizard-content">
+              <span>Finish!</span>
+            </div>
+            <div class="wizard-avatar">
+              <mat-icon class="wizard-icon">thumb_up</mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main-content-row">
+        <div class="available-ad-container">
+          <!-- Cart Card-->
+          <mat-card class="cart-card">
+            <h3>Inserts</h3>
+            <mat-list>
+              <mat-list-item *ngFor="let adSetup of viewModel.ads" class="mat-list-item-divider">
+                {{adSetup?.insert?.pageType}}
+                <span class="spacer"></span>
+                <mat-icon class="checkmark">check</mat-icon>
+                <span *ngIf="adSetup.newAd" class="insert-setup-later">Setup Later</span>
+                <span *ngIf="!adSetup.newAd" class="insert-configured">Ready</span>
+              </mat-list-item>
+            </mat-list>
+          </mat-card>
+
+          <!-- Billing Details Card -->
+          <mat-card class="available-ad-card">
+            <mat-card-content>
+              <form>
+                <mat-card-subtitle>Payment and Billing Details</mat-card-subtitle>
+                <div class="payment-details-grid">
+                  <mat-form-field appearance="fill" [ngClass]="{'mat-form-field-invalid': !_name}">
+                    <mat-label>Name on card</mat-label>
+                    <input matInput [(ngModel)]="viewModel.paymentInformation.fullname" type="text"
+                      (keyup)="checkForCreditCardName($event)" required [ngModelOptions]="{standalone: true}">
+                    <mat-hint *ngIf="_name">As it appears on your card</mat-hint>
+                    <mat-hint *ngIf="!_name" class="mat-error">Only letters are allowed</mat-hint>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" [ngClass]="{'mat-form-field-invalid': !_creditCard}">
+                    <mat-label>Card Number</mat-label>
+                    <input matInput [(ngModel)]="viewModel.paymentInformation.creditCardNumber"
+                      (keyup)="onlyNumericCharacters($event, 'cardNumber')" minlength="16" maxlength="16" required
+                      [ngModelOptions]="{standalone: true}">
+                    <mat-hint *ngIf="_creditCard">16-digit card number</mat-hint>
+                    <mat-hint *ngIf="!_creditCard" class="mat-error">Only numbers are allowed</mat-hint>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" [ngClass]="{'mat-form-field-invalid': !_expirationDate}">
+                    <mat-label>Expiration Date</mat-label>
+                    <input matInput [(ngModel)]="viewModel.paymentInformation.expirationDate"
+                      (keyup)="checkExpirationDate($event)" minlength="5" maxlength="5" required
+                      [ngModelOptions]="{standalone: true}">
+                    <mat-hint *ngIf="_expirationDate">00/00</mat-hint>
+                    <mat-hint *ngIf="!_expirationDate" class="mat-error">Please follow the specific format</mat-hint>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" [ngClass]="{'mat-form-field-invalid': !_securityCode}">
+                    <mat-label>Security Code</mat-label>
+                    <input matInput [(ngModel)]="viewModel.paymentInformation.creditCardCode"
+                      (keyup)="onlyNumericCharacters($event, 'secCode')" minlength="3" maxlength="4" required
+                      [ngModelOptions]="{standalone: true}">
+                    <mat-hint *ngIf="_securityCode">Three or four digit code</mat-hint>
+                    <mat-hint *ngIf="!_securityCode" class="mat-error">Only numbers are allowed</mat-hint>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" class="payment-details-address"
+                    [ngClass]="{'mat-form-field-invalid': !_address1}">
+                    <mat-label>Address Line 1</mat-label>
+                    <input matInput [(ngModel)]="viewModel.paymentInformation.addressLine1" type="text"
+                      (keyup)="checkAddress($event, 'address1')" required [ngModelOptions]="{standalone: true}">
+                    <mat-hint *ngIf="!_address1" class="mat-error">Address in an incorrect format</mat-hint>
+                    <mat-hint *ngIf="_address1">Please enter Full Address</mat-hint>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" class="payment-details-address"
+                    [ngClass]="{'mat-form-field-invalid': !_address2}">
+                    <mat-label>Address Line 2</mat-label>
+                    <input matInput [(ngModel)]="viewModel.paymentInformation.addressLine2" type="text"
+                      (keyup)="checkAddress($event, 'address2')" [ngModelOptions]="{standalone: true}">
+                    <mat-hint *ngIf="!_address2" class="mat-error">Address in an incorrect format</mat-hint>
+                    <mat-hint *ngIf="_address2">Optional</mat-hint>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" [ngClass]="{'mat-form-field-invalid': !_city}">
+                    <mat-label>City</mat-label>
+                    <input matInput [(ngModel)]="viewModel.paymentInformation.city" type="text"
+                      (keyup)="checkCity($event)" required [ngModelOptions]="{standalone: true}">
+                    <mat-hint *ngIf="!_city" class="mat-error">Only letters are allowed</mat-hint>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" [ngClass]="{'mat-form-field-invalid': !_state}">
+                    <mat-label>State</mat-label>
+                    <input matInput [(ngModel)]="viewModel.paymentInformation.state" type="text"
+                      (keyup)="onlyAlphaCharacters($event, 'state')" required [ngModelOptions]="{standalone: true}">
+                    <mat-hint *ngIf="!_state" class="mat-error">Only letters are allowed</mat-hint>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" [ngClass]="{'mat-form-field-invalid': !_zipCode}">
+                    <mat-label>Zip Code</mat-label>
+                    <input matInput [(ngModel)]="viewModel.paymentInformation.zip"
+                      (keyup)="onlyNumericCharacters($event, 'zipCode')" minlength="5" maxlength="5" required
+                      [ngModelOptions]="{standalone: true}">
+                    <mat-hint *ngIf="_zipCode">Five digit code</mat-hint>
+                    <mat-hint *ngIf="!_zipCode" class="mat-error">Only numbers are allowed</mat-hint>
+                  </mat-form-field>
+                </div>
+              </form>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="package-container">
+          <mat-card class="package-card">
+            <mat-card-header>
+              <mat-card-title>{{viewModel?.adPackage?.title || "Package Title"}}</mat-card-title>
+              <mat-card-subtitle>{{viewModel?.adPackage?.description || "Description"}}</mat-card-subtitle>
+            </mat-card-header>
+            <p class="mat-card-price-container">${{viewModel?.adPackage?.price || "--"}}</p>
+            <mat-card-content class="package-card-content">
+              <span>Inserts</span>
+              <div class="ad-sizes-list">
+                <span *ngFor="let size of this.viewModel?.adPackageSizes| keyvalue">
+                  {{size.key}}: {{size.value}}
+                </span>
+              </div>
+              <p>Color: <span>{{viewModel?.adPackage?.color || "?"}}</span></p>
+              <p>Time Length: <span>{{viewModel?.adPackage?.time?.length}}
+                  {{viewModel?.adPackage?.time?.unitOfTime}}</span></p>
+            </mat-card-content>
+          </mat-card>
+          <button mat-raised-button color="primary" class="checkout-button" (click)="placeOrder()"
+            [disabled]="!areFieldsValid()">
+            Place your order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

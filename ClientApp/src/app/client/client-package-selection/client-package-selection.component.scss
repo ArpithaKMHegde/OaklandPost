@@ -1,0 +1,102 @@
+:host {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+// Cory: Height 100% consistently causing scrollbar issues
+.main-div {
+  display: flex;
+  margin: 0;
+  flex: 1;
+}
+
+.main-div-content {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.sidebar {
+  display: flex;
+}
+
+.package-selection-div {
+  display: flex;
+  //justify-content: center;
+  align-items: center;
+  flex: 1;
+  flex-direction: column;
+  background: linear-gradient(0deg, rgba(245, 245, 245, 1) 60%, rgb(63, 81, 181) 60%, rgb(63, 81, 181) 100%);
+  padding-top: 100px;
+}
+
+.package-selection-title {
+  font-size: 24pt;
+  color: #fff;
+  margin-bottom: 65px;
+}
+
+.package-selection-div-content {
+  flex-direction: row;
+  display: flex;
+}
+
+.mat-list {
+  display: flex;
+  flex-direction: column;
+  width: 20em;
+  margin-right: 3em;
+  flex: 1;
+}
+
+.sidebar-card {
+  width: 200px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+
+// Cory: Had conflicting css between cards in nav and packages
+.package-card {
+  height: 400px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 5em;
+}
+
+.package-selection-div-content>div:last-child .package-card {
+  margin-right: 0em;
+}
+
+.package-card-content {
+  flex-grow: 1;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 16px 0px;
+}
+
+.mat-card-price-container {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  margin-top: 10%;
+}
+
+.mat-card-button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+.navigation-pane {
+  display: flex;
+  flex-direction: column;
+}
+
+.margin-left {
+  margin-left: 2em;
+}

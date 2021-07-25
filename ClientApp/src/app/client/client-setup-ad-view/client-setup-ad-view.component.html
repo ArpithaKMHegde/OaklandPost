@@ -1,0 +1,89 @@
+<div class="main-div">
+  <div class="media-container">
+    <div class="innerdiv">
+      <h2>Setup Ad</h2>
+      <div class="ad-setup-grid">
+        <mat-card>
+          <mat-card-content>
+            <div class="mat-title">Choose Package Run Date</div>
+            <mat-form-field appearance="outline">
+              <mat-label>Choose a date</mat-label>
+              <mat-date-range-input [rangePicker]="picker" [dateFilter]="dateFilter">
+                <input [value]="viewModel?.startDate" matStartDate placeholder="Start date"
+                  (dateChange)="startDateChanged($event)">
+                <input [value]="viewModel?.endDate" matEndDate placeholder="End date"
+                  (dateChange)="endDateChanged($event)">
+              </mat-date-range-input>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+            <div class="mat-title ad-title-margin-1">Ad Location on Page</div>
+            <mat-radio-group aria-label="Select Ad Location" [value]="viewModel.selectedAdLocation"
+              (change)="radioChanged($event)">
+              <mat-radio-button class="adlocation-radio-button" *ngFor="let adLocation of viewModel?.adLocations"
+                [value]="adLocation">{{adLocation}}</mat-radio-button>
+            </mat-radio-group>
+            <div class="mat-title ad-title-margin-2">
+              Ad Files
+              <span class="browseFilesButton">
+                <button mat-raised-button (click)="browseFiles()">Browse Files</button>
+                <input class="hide-input" type="file" id="browse-files" name="browse-files"
+                  (change)="addFiles($event)" />
+              </span>
+            </div>
+            <app-file-upload-input class="file-upload-text" [(files)]="viewModel.files">
+              <p>Drag and Drop files for ad here!</p>
+            </app-file-upload-input>
+          </mat-card-content>
+        </mat-card>
+
+        <div class="summary-card">
+          <mat-card>
+            <mat-card-title class="title-insert">{{userAd.insert.pageType}}</mat-card-title>
+            <mat-card-subtitle>{{adPackage!.title}}</mat-card-subtitle>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+              <mat-list>
+                <mat-list-item class="list-item-remove-padding">
+                  <span>Date</span>
+                  <span class="spacer"></span>
+                  <span *ngIf="!viewModel.startDateString || !viewModel.endDateString">Select a date</span>
+                  <span *ngIf="viewModel.startDateString && viewModel.endDateString">{{viewModel.startDateString
+                    || "N/A"}} - {{viewModel.endDateString || "N/A"}}</span>
+                </mat-list-item>
+                <mat-list-item class="list-item-remove-padding">
+                  <span>Location</span>
+                  <span class="spacer"></span>
+                  <span>{{viewModel.selectedAdLocation}}</span>
+                </mat-list-item>
+                <mat-list-item class="list-item-remove-padding">
+                  <span>Color</span>
+                  <span class="spacer"></span>
+                  <mat-icon *ngIf="viewModel.isColor" class="green-icon">check</mat-icon>
+                  <mat-icon *ngIf="!viewModel.isColor">remove</mat-icon>
+                </mat-list-item>
+                <mat-list-item class="list-item-remove-padding">
+                  <span>Time Length</span>
+                  <span class="spacer"></span>
+                  <span>{{adPackage!.time.length}} {{adPackage!.time.unitOfTime}}</span>
+                </mat-list-item>
+                <mat-list-item class="list-item-remove-padding">
+                  <span>Ad Files Uploaded</span>
+                  <span class="spacer"></span>
+                  <span>{{viewModel.files.length}}</span>
+                </mat-list-item>
+              </mat-list>
+            </mat-card-content>
+          </mat-card>
+          <button mat-raised-button color="primary" class="submit-ad-button" (click)="submitAd()"
+            [disabled]="this.viewModel.adSubmitting || !fieldsAreValid()">Save Ad
+            <mat-spinner *ngIf="this.viewModel.adSubmitting" style="display: inline-block;" [diameter]="20">
+            </mat-spinner>
+          </button>
+          <button mat-raised-button class="submit-ad-button" (click)="cancel()">Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

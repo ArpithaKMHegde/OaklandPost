@@ -1,0 +1,37 @@
+<div class="main-div">
+  <mat-card>
+    <mat-card-content>
+      <div>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="_email">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input matInput [(ngModel)]="_firstName">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput [(ngModel)]="_lastName">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput [type]="_hide ? 'password' : 'text'" class="email" [(ngModel)]="_password">
+          <button mat-icon-button matSuffix (click)="_hide=!_hide" [attr.aria-label]="'_hide password'"
+            [attr.aria-pressed]="_hide">
+            <mat-icon>{{_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="updateAccountInfo()">Update Account Info</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

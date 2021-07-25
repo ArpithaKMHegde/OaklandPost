@@ -1,0 +1,75 @@
+<mat-toolbar color="primary" class="site-toolbar">
+  <mat-icon class="logo">feed</mat-icon>
+  <span [routerLink]="['']">Oakland Post</span>
+  <div class="spacer"></div>
+  <!-- Client Navigation List -->
+  <div class="navigation-list" *ngIf="userType == 'client'">
+    <a [routerLink]='"/"'>Home</a>
+    <a [routerLink]='"/my-ads"'>My Ads</a>
+    <button [routerLink]="'/package-selection'" mat-raised-button class="buy-package-button">Buy a Package</button>
+  </div>
+
+  <!-- Admin Navigation List -->
+  <div class="navigation-list" *ngIf="userType == 'admin'">
+    <a [routerLink]='"/"'>Home</a>
+    <a [routerLink]='"/admin-package-selection"'>Package Maintenance</a>
+    <a [routerLink]='"/admin-ad-reviews-list"'>Review Ads</a>
+  </div>
+
+  <!-- Anonymous -->
+  <div class="navigation-list" *ngIf="userType == 'anonymous'">
+    <a [routerLink]='"/"'>Home</a>
+    <button [routerLink]="'/package-selection'" mat-raised-button class="buy-package-button">Buy a Package</button>
+  </div>
+
+  <div *ngIf="!this._isUserSignedIn">
+    <button mat-raised-button (click)="directUserToSignIn()">Sign In</button>
+  </div>
+
+  <div *ngIf="this._isUserSignedIn">
+    <button mat-icon-button [matMenuTriggerFor]="accountMenu" (click)="checkIfUserIsSignedIn()">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #accountMenu="matMenu">
+      <div class="user-menu">
+        <div class="user-menu-content">
+          <mat-icon class="user-menu-icon">account_circle</mat-icon>
+          <div class="user-menu-username">
+            <span class="title">{{_userInfo.firstName}} {{_userInfo.lastName}}</span>
+            <span class="subtitle">{{_userInfo.email}}</span>
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+        <div class="user-menu-actions">
+          <ng-container>
+            <mat-list class="no-padding">
+              <mat-list-item (click)="navigateToAccount()" class="mat-list-item-divider mat-list-item-clickable">
+                <span class="spacer"></span>
+                Account
+                <span class="spacer"></span>
+              </mat-list-item>
+              <mat-list-item (click)="navigateToSettings()" *ngIf="_userInfo.admin"
+                class="mat-list-item-divider mat-list-item-clickable">
+                <span class="spacer"></span>
+                Settings
+                <span class="spacer"></span>
+              </mat-list-item>
+              <mat-list-item (click)="logout()" class="mat-list-item-divider mat-list-item-clickable">
+                <span class="spacer"></span>
+                Logout
+                <span class="spacer"></span>
+              </mat-list-item>
+            </mat-list>
+          </ng-container>
+        </div>
+      </div>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+<router-outlet></router-outlet>
+<div class="footer">
+  <div class="footer-content">
+    &copy; 2021 - Created by: Cory Carter, Chase Ehlert, Arpitha Hegde, Maurice Fuentes
+  </div>
+</div>

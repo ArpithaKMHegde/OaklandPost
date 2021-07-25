@@ -1,0 +1,80 @@
+<div layout="row" layout-align="center" class="main_div">
+    <div class="innerdiv">
+        <h2>View Accepted/Rejected Ad details</h2>
+        <div class="table">
+            <mat-card>
+                <mat-card-subtitle>
+                    <p class="para_subtitle">
+                        <span>Status:&nbsp;&nbsp;{{_adStatus}}</span>
+                        <span>&nbsp;&nbsp;</span>
+                        <span>Reviewed Date:&nbsp;&nbsp; {{_userAd.reviewedAd.reviewedDate | date :
+                            "MM/dd/YYYY"}}</span>
+                    </p>
+                </mat-card-subtitle>
+                <mat-divider></mat-divider>
+                <mat-card-content>
+                    <mat-list>
+                        <mat-list-item>
+                            <mat-card-title>
+                                {{_pageType}}
+                            </mat-card-title>
+                            <span class="spacer"></span>
+                            <mat-card-subtitle>
+                                {{_package.title}}
+                            </mat-card-subtitle>
+                            <mat-divider></mat-divider>
+                        </mat-list-item>
+
+                        <mat-list-item>
+                            <span>Color</span>
+                            <span class="spacer"></span>
+                            <mat-icon *ngIf="_package.isColor" class="green-icon">check</mat-icon>
+                            <mat-icon *ngIf="!_package.isColor">remove</mat-icon>
+                        </mat-list-item>
+
+                        <mat-list-item>
+                            <span>Location</span>
+                            <span class="spacer"></span>
+                            <span>{{_userAd.location}}</span>
+                        </mat-list-item>
+
+                        <mat-list-item>
+                            <span>Submitted Date</span>
+                            <span class="spacer"></span>
+                            <span>{{_userAd.submittedDate| date : "MM/dd/YYYY"}}</span>
+                        </mat-list-item>
+
+                        <mat-list-item>
+                            <span>Start Date</span>
+                            <span class="spacer"></span>
+                            <span>{{_userAd.startDate| date : "MM/dd/YYYY"}}</span>
+                        </mat-list-item>
+
+                        <mat-list-item>
+                            <span>End Date</span>
+                            <span class="spacer"></span>
+                            <span>{{_userAd.endDate| date : "MM/dd/YYYY"}}</span>
+                        </mat-list-item>
+
+                        <mat-list-item>
+                            <span>Ad Files</span>
+                            <span class="spacer"></span>
+                            <span>{{_fileLength}}</span>
+                        </mat-list-item>
+
+                    </mat-list>
+
+                    <mat-list>
+                        <mat-list-item>
+                            <div class="div_matlist">
+                                <span>Comments</span><br />
+                                <textarea class="textarea_style" readonly>{{_userAd.reviewedAd.comments}}</textarea>
+                            </div>
+                        </mat-list-item>
+                    </mat-list>
+
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

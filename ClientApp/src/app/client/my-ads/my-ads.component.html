@@ -1,0 +1,67 @@
+<div class="main-div">
+  <div class="innerdiv">
+    <h2>My Ads</h2>
+    <mat-tab-group (selectedTabChange)="onTabChanged($event)">
+      <mat-tab label="Inserts Available">
+        <mat-card>
+          <div *ngFor="let p of InsertsAvailable">
+            <div class="innerdiv_matcard">
+              <mat-card-title> {{p.pageType}} </mat-card-title>
+              <div mat-dialog-actions class="div_button">
+                <button mat-raised-button color="primary" (click)="setupAd(p.id)">Setup Ad</button>
+              </div>
+            </div>
+            <mat-card-subtitle> {{p.title}} </mat-card-subtitle>
+            <hr />
+          </div>
+        </mat-card>
+      </mat-tab>
+      <mat-tab label="Ads Waiting For Review">
+        <mat-card>
+          <div *ngFor="let p of AdsToBeReviewed">
+            <div class="innerdiv_matcard">
+              <mat-card-title> {{p.pageType}} </mat-card-title>
+              <div mat-dialog-actions class="div_button">
+                <button mat-raised-button color="primary" (click)="viewAd(p.userAdId)">View Ad</button>
+              </div>
+            </div>
+            <mat-card-subtitle> {{p.title}} </mat-card-subtitle>
+            <hr />
+          </div>
+        </mat-card>
+      </mat-tab>
+      <mat-tab label="Scheduled/Running Ads">
+        <mat-card>
+          <div *ngFor="let p of RunningAds">
+            <div class="innerdiv_matcard">
+              <mat-card-title> {{p.pageType}} </mat-card-title>
+              <div mat-dialog-actions class="div_button">
+                <button mat-raised-button color="primary" (click)="viewAd(p.userAdId)">View Ad</button>
+              </div>
+            </div>
+            <mat-card-subtitle>
+              {{p.title}}, From: {{p.startDate | date : "MM/dd/YYYY"}} To: {{p.endDate | date : "MM/dd/YYYY"}}
+            </mat-card-subtitle>
+            <hr />
+          </div>
+        </mat-card>
+      </mat-tab>
+      <mat-tab label="Completed Ads">
+        <mat-card>
+          <div *ngFor="let p of CompletedAds">
+            <div class="innerdiv_matcard">
+              <mat-card-title> {{p.pageType}} </mat-card-title>
+              <div mat-dialog-actions class="div_button">
+                <button mat-raised-button color="primary" (click)="viewAd(p.userAdId)">View Ad</button>
+              </div>
+            </div>
+            <mat-card-subtitle>
+              {{p.title}}, From: {{p.startDate | date : "MM/dd/YYYY"}} To: {{p.endDate | date : "MM/dd/YYYY"}}
+            </mat-card-subtitle>
+            <hr />
+          </div>
+        </mat-card>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

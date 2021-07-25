@@ -1,0 +1,23 @@
+.main-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+mat-card {
+display: flex;
+  width: 15em;
+  margin-top: 1em;
+  //padding: 32px 64px;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+    margin-top: 1em;
+}
+
+.button {
+  margin-left: 1em;
+}

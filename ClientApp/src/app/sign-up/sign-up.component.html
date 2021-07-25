@@ -1,0 +1,61 @@
+<div class="container">
+    <mat-card>
+        <mat-card-title style="margin-top:50px; text-align: center; color: #3F51B5">WELCOME</mat-card-title>
+        <mat-card-subtitle style="text-align: center; color: #7a7c88">Thank you for registering</mat-card-subtitle>
+        <mat-card-content>
+            <form [formGroup]="formModel" style="margin-top: 40px; margin-bottom: 50px;">
+                <!--First Name and Last Name-->
+                <div style="width: 500px; margin: 0px auto;">
+                    <mat-form-field style="width: 48%; float: left; margin-top: 10px; margin-bottom: 10px;" appearance="fill">
+                        <mat-label>Enter your first name</mat-label>
+                        <input class="form-control" formControlName="firstName" matInput>
+                    </mat-form-field>
+                    <mat-form-field style="width: 48%; float: right; margin-top: 10px; margin-bottom: 10px;" appearance="fill">
+                        <mat-label>Enter your last name</mat-label>
+                        <input class="form-control" formControlName="lastName" matInput>
+                    </mat-form-field>
+                </div>
+                <div formGroupName="Emails">
+                <div style="width: 500px; margin: 0px auto; margin-top: 10px; margin-bottom: 10px;">
+                    <mat-form-field style="width: 100%;" appearance="fill">
+                        <mat-label>Enter your email address</mat-label>
+                        <input class="form-control" formControlName="email" matInput>
+                        <mat-hint>Please enter a real email address</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div style="width: 500px; margin: 0px auto; margin-top: 10px; margin-bottom: 10px;">
+                    <mat-form-field style="width: 100%;" appearance="fill">
+                        <mat-label>Confirm your email address</mat-label>
+                        <input class="form-control" formControlName="confirmEmail" matInput>
+                    </mat-form-field>
+                </div>
+            </div>
+                <div formGroupName="Passwords">
+                <div style="width: 500px; margin: 0px auto; margin-top: 10px; margin-bottom: 10px;">
+                    <mat-form-field style="width: 100%;" appearance="fill">
+                        <mat-label>Enter a password</mat-label>
+                        <input class="form-control" formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-hint>Password must be at least 6 characters long</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div style="width: 500px; margin: 0px auto; margin-top: 10px; margin-bottom: 10px;">
+                    <mat-form-field style="width: 100%;" appearance="fill">
+                        <mat-label>Confirm your password</mat-label>
+                        <input class="form-control" formControlName="confirmPassword" matInput [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+            </div>
+                <div style="width: 290px; margin: 0px auto;  text-align: center;">
+                    <button style="margin-top: 40px;" mat-raised-button color="primary" [disabled]="!formModel.valid" (click)="submitUser()">REGISTER</button>
+                    <p style="margin-top: 10px;">Already have an account with us? <a href="/sign-in">Sign in</a></p>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,43 @@
+<div class="main-div">
+  <mat-card>
+    <mat-card-content>
+      <div>
+        <mat-form-field appearance="fill" [ngClass]="{'mat-form-field-invalid': !_emailValid}">
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="_email" (keyup)="checkForEmailFormat($event)"
+           [ngModelOptions]="{standalone: true}">
+           <mat-hint *ngIf="!_emailValid" class="mat-error">Enter an email in a valid format</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" [ngClass]="{'mat-form-field-invalid': !_firstNameValid}">
+          <mat-label>First Name</mat-label>
+          <input matInput [(ngModel)]="_firstName" (keyup)="checkForNameFormat($event, 'firstName')"
+           [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" [ngClass]="{'mat-form-field-invalid': !_lastNameValid}">
+          <mat-label>Last Name</mat-label>
+          <input matInput [(ngModel)]="_lastName" (keyup)="checkForNameFormat($event, 'lastName')"
+           [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" [ngClass]="{'mat-form-field-invalid': !_passwordValid}">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="_hide ? 'password' : 'text'" class="email" [(ngModel)]="_password"
+           [ngModelOptions]="{standalone: true}">
+            <!-- (keyup)="onlyAlphaCharacters($event, 'name')"> -->
+          <button mat-icon-button matSuffix (click)="_hide=!_hide" [attr.aria-label]="'_hide password'"
+            [attr.aria-pressed]="_hide">
+            <mat-icon>{{_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="updateAccountInfo()">Update Account Info</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

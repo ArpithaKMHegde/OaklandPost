@@ -1,0 +1,113 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+// Common Styles
+.spacer {
+  display: flex;
+  flex-grow: 1;
+}
+
+.mat-card-header-text {
+  width: 100% !important;
+  text-align: center;
+}
+
+// Cory: Router outlet removes css, need to apply outside of the component
+app-root {
+  flex-direction: column;
+  display: flex;
+  flex: 1;
+}
+
+router-outlet + * {
+  flex-direction: column;
+  display: flex;
+  flex: 1;
+}
+
+
+.mat-tab-list .mat-tab-labels .mat-tab-label-active {
+  font-weight: 500 !important;
+}
+
+
+.wizard-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.wizard-avatar {
+  background: gray;
+  border-radius: 64px;
+  width: 64px;
+  height: 64px;
+  text-align: center;
+}
+
+.wizard-avatar.active {
+  background: teal;
+}
+
+.wizard-icon {
+  font-size: 32px;
+  width: 32px !important;
+  height: 32px !important;
+  color: #fff;
+  fill: #fff;
+  line-height: 64px;
+}
+
+.wizard-content {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.wizard-list {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  padding: 16px 0px;
+  margin: 0 auto;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.wizard-list::before {
+  content: '';
+  height: 2px;
+  top: 60%;
+  position: absolute;
+  left: 100px;
+  right: 100px;
+  border-bottom: 6px dotted #bbb;
+}
+
+.wizard-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-right: 32px;
+  z-index: 1;
+}
+
+.wizard-item:last-child {
+  margin-right: 0px;
+}
+
+.wizard-title {
+  text-align: center;
+}

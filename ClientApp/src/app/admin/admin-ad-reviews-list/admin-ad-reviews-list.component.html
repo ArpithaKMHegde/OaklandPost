@@ -1,0 +1,78 @@
+<div layout="row" layout-align="center" class="main_div">
+  <div class="innerdiv">
+    <h2>Ad Reviews</h2>
+    <div class="table">
+      <mat-tab-group (selectedTabChange)="onTabChanged($event)">
+        <mat-tab label="Open Ads">
+          <mat-card>
+            <div *ngFor="let p of OpenAds">
+              <div class="innerdiv_matcard">
+                <mat-card-title class="matcard_title_style">
+                  {{p.firstName}} {{p.lastName}}: {{p.email}}, {{p.pageType}} at {{p.location}}
+                </mat-card-title>
+                <div mat-dialog-actions class="div_button">
+                  <button mat-raised-button color="primary" (click)="viewOpenAd(p.id)">View</button>
+                </div>
+              </div>
+              <mat-card-subtitle>
+                Date Requested: {{p.startDate | date : "MM/dd/YYYY"}} - {{p.endDate | date : "MM/dd/YYYY"}}
+                <div>
+                  Date Submitted: {{p.submittedDate | date : "MM/dd/YYYY"}}
+                </div>
+              </mat-card-subtitle>
+              <hr />
+            </div>
+          </mat-card>
+        </mat-tab>
+        <mat-tab label="Approved Ads">
+          <mat-card>
+            <div *ngFor="let p of ConfirmedAds">
+              <div class="innerdiv_matcard">
+                <mat-card-title class="matcard_title_style">
+                  {{p.firstName}} {{p.lastName}}: {{p.email}}, {{p.pageType}} at {{p.location}}
+                </mat-card-title>
+                <div mat-dialog-actions class="div_button">
+                  <button mat-raised-button color="primary" (click)="viewConfirmedAd(p.id)">View</button>
+                </div>
+              </div>
+              <mat-card-subtitle>
+                Date Requested: {{p.startDate | date : "MM/dd/YYYY"}} - {{p.endDate | date : "MM/dd/YYYY"}}
+                <div>
+                  Date Submitted: {{p.submittedDate | date : "MM/dd/YYYY"}}
+                </div>
+                <div>
+                  Date Confirmed: {{p.reviewedDate| date : "MM/dd/YYYY"}}
+                </div>
+              </mat-card-subtitle>
+              <hr />
+            </div>
+          </mat-card>
+        </mat-tab>
+        <mat-tab label="Denied Ads">
+          <mat-card>
+            <div *ngFor="let p of DeniedAds">
+              <div class="innerdiv_matcard">
+                <mat-card-title class="matcard_title_style">
+                  {{p.firstName}} {{p.lastName}}: {{p.email}}, {{p.pageType}} at {{p.location}}
+                </mat-card-title>
+                <div mat-dialog-actions class="div_button">
+                  <button mat-raised-button color="primary" (click)="viewConfirmedAd(p.id)">View</button>
+                </div>
+              </div>
+              <mat-card-subtitle>
+                Date Requested: {{p.startDate | date : "MM/dd/YYYY"}} - {{p.endDate | date : "MM/dd/YYYY"}}
+                <div>
+                  Date Submitted: {{p.submittedDate | date : "MM/dd/YYYY"}}
+                </div>
+                <div>
+                  Date Confirmed: {{p.reviewedDate| date : "MM/dd/YYYY"}}
+                </div>
+              </mat-card-subtitle>
+              <hr />
+            </div>
+          </mat-card>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,183 @@
+:host {
+  flex-direction: row;
+  justify-content: center;
+}
+
+.mat-card-no-padding {
+  padding: 0px;
+}
+
+.mat-list-item-divider {
+  border-bottom: 1px solid rgba(0, 0, 0, .12);
+}
+
+.mat-list-item-divider:last-child {
+  border-bottom: 0px;
+}
+
+.main {
+  max-width: 1280px;
+  flex: 1;
+  padding-top: 16px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.available-ad-container {
+  margin-right: 16px;
+  justify-content: center;
+}
+
+.available-ads-list {
+  flex: 1;
+}
+
+.page-title {
+    display: flex;
+    justify-content: center;
+}
+
+.list-title {
+  padding: 0;
+  margin: 0;
+}
+
+.section {
+  margin-bottom: 32px;
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+.message-container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+.aligned-checkmark {
+  margin-top: -6px;
+  fill: green;
+  color: green;
+}
+
+.package-card {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.package-card-content {
+  flex-grow: 1;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 16px 0px;
+}
+
+.mat-card-price-container {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  margin-top: 10%;
+}
+
+.mat-card-button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+.ad-sizes-list {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-button {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.mat-list-no-padding {
+  padding: 0px;
+}
+
+
+.insert-card {
+  margin-bottom: 8px;
+}
+
+.insert-card-container {
+  margin-right: 32px;
+  margin-bottom: 32px;
+  width: 245px;
+}
+
+.ad-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.insert-card-actions {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.disabled-insert {
+  opacity: .5;
+
+  & .setup-later-action {
+    opacity: 1;
+  }
+}
+
+.info-card {
+  flex: 1;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: row;
+  height: 116px;
+  align-items: center;
+  overflow: hidden;
+  min-width: 625px;
+  max-width: 800px;
+}
+
+.info-card-content {
+  flex: 1;
+  flex-direction: column;
+  margin-top: 8px;
+  margin-left: 16px;
+  margin-bottom: 16px;
+}
+
+.info-card-avatar {
+  width: 72px;
+  height: 72px;
+  padding: 16px;
+  line-height: 72px;
+  display: inline-block;
+  background: teal;
+  border-radius: 132px;
+  border-color: transparent;
+  margin-left: 16px;
+}
+
+.info-card-icon {
+  font-size: 72px;
+  color: #fff;
+  fill: #fff;
+}
+
+.dates {
+  font-size: .85em;
+}

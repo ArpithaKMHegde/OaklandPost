@@ -1,0 +1,12 @@
+<div class="main-div">
+  <div>
+    <button mat-raised-button color="primary" (click)="openAddAdminDialog()">Create an admin account</button>
+  </div>
+  <div *ngFor="let admin of _adminList">
+    <div>
+      <mat-card>
+        <mat-card-title>{{admin.firstName}} {{admin.lastName}}</mat-card-title>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+ .main-div {
+   display: flex;
+   justify-content: center;
+ }
+
+ mat-card {
+   margin-top: 3em;
+   padding: 32px 64px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
+
+ .email {
+   width: 15em;
+ }
+
+ .account-icon {
+   font-size: 72px;
+   width: 72px;
+   height: 72px;
+   color: #bbb;
+   z-index: 1;
+   position: relative;
+   background: #fff;
+ }
+
+ .login-header::before {
+   content: '';
+   height: 2px;
+   margin-top: 36px;
+   position: absolute;
+   left: 0px;
+   right: 0px;
+   background: #bbb;
+ }
+
+ .login-header {
+   text-align: center;
+ }
+
+ .account-setup {
+   margin-top: 32px;
+ }

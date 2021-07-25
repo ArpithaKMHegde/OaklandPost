@@ -1,0 +1,6 @@
+<p>db-test-view works!</p>
+
+<button (click)="getTestData()" mat-raised-button color="primary">Get Test Data!</button>
+
+
+<div *ngFor="let testItem of testData">{{testItem.name}}</div>

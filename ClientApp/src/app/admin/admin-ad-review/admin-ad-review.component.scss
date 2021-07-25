@@ -1,0 +1,137 @@
+.main-div {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.mat-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-title {
+  font-size: 2em;
+  margin-top: 1em;
+  margin-bottom: 16px;
+}
+
+.ad-setup-grid {
+  display: flex;
+}
+
+.calendar-review {
+  flex: 1;
+  max-width: 650px;
+}
+
+.main-div-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  max-width: 1280px;
+}
+
+.main-div-content {
+  display:flex;
+  flex-direction: row;
+}
+
+.ad-summary {
+  margin-left: 3em;
+}
+
+.title-insert {
+  margin-bottom: 16px;
+}
+
+.summary-card {
+  width: 375px;
+}
+
+::ng-deep .mat-list-base .mat-list-item.list-item-remove-padding .mat-list-item-content {
+  padding: 0px;
+}
+
+.submit-ad-button {
+  width: 100%;
+  margin: 10px 0px;
+  justify-content: center;
+}
+
+.media-container {
+  width: 1280px;
+  padding: 16px 16px;
+  margin: 0 auto;
+}
+
+.ad-title-margin-1 {
+  margin-top: 18px;
+}
+
+.ad-title-margin-2 {
+  margin-top: 36px;
+}
+
+.file-upload-text {
+  font-size: 16px;
+  color: rgb(100, 100, 100);
+}
+
+.green-icon {
+  color: #1B5E20;
+}
+
+
+/* New */
+.review-actions button+button {
+  margin-top: 0px;
+}
+
+.ad-calendar {
+  width: 400px;
+  border: 1px solid #ccc;
+}
+
+.file-upload-container {
+  display: flex;
+  min-width: 350px;
+  min-height: 100px;
+  background: rgb(233, 233, 233);
+  border: 4px dashed rgb(200, 200, 200);
+}
+
+.container-empty-state {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container-filled {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+
+.file-item {
+  margin: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.file-item-icon {
+  margin: 0 auto;
+  display: block;
+}
+
+.margin-top {
+  margin-top: 1em;
+}
+
+.full-width {
+  width: 100%;
+}

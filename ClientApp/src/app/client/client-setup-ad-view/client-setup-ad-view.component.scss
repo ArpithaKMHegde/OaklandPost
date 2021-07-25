@@ -1,0 +1,75 @@
+.title-insert {
+  margin-bottom: 16px;
+}
+
+.summary-card {
+  width: 375px;
+}
+
+::ng-deep .mat-list-base .mat-list-item.list-item-remove-padding .mat-list-item-content {
+  padding: 0px;
+}
+
+.ad-setup-grid {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: 1fr auto;
+}
+
+.submit-ad-button {
+  width: 100%;
+  margin: 10px 0px;
+  justify-content: center;
+}
+
+.media-container {
+  width: 1280px;
+  padding: 16px 16px;
+  margin: 0 auto;
+}
+
+.adlocation-radio-button {
+  margin: 0px 16px;
+}
+
+.ad-title-margin-1 {
+  margin-top: 18px;
+}
+
+.ad-title-margin-2 {
+  margin-top: 36px;
+}
+
+.file-upload-text {
+  font-size: 16px;
+  color: rgb(100, 100, 100);
+}
+
+.green-icon {
+  color: #1B5E20;
+}
+
+.main-div {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.navigation-pane {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar {
+  display: flex;
+}
+
+.browseFilesButton {
+  margin-left: 1em;
+}
+
+.hide-input {
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+}
